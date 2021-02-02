@@ -7,6 +7,7 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const h1 = document.querySelector('h1');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -59,13 +60,27 @@ const section1 = document.querySelector('#section--1');
 btnScrollTo.addEventListener('click', function (e) {
   const s1coords = section1.getBoundingClientRect();
 
-  window.scrollTo({
-    left: s1coords.left + window.pageXOffset,
-    top: s1coords.top + window.pageYOffset,
-    behavior: 'smooth',
-  });
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+  //newer method only works on the most modern browsers
+  section1.scrollIntoView({ behavior: 'smooth' });
 });
 
 /// styles attributes and classes
 
 // const logo = document.querySelector('.nav__logo');
+
+const alertH1 = function (e) {
+  alert('This is an alert');
+  h1.removeEventListener('mouseenter', alertH1);
+};
+
+h1.addEventListener('mouseenter', alertH1);
+
+// old school way. More modern to use add event listener
+// h1.onmouseenter = function (e) {
+//   alert('you are reading the heading');
+// };
