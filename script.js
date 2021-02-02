@@ -32,11 +32,14 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-/////// Creating and Inserting elements
-
-//a lot of use very good way
-//insertAdjacentHTML
-
+//Page navigation
+document.querySelectorAll('.nav__link').forEach(function (link) {
+  link.addEventListener('click', function (e) {
+    e.preventDefault();
+    const id = this.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  });
+});
 //Cookie notice
 
 const message = document.createElement('div');
@@ -69,6 +72,8 @@ btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
+/////////////////////////////////////////////////////////////////
+//notes
 /// styles attributes and classes
 
 // const logo = document.querySelector('.nav__logo');
@@ -80,25 +85,29 @@ btnScrollTo.addEventListener('click', function (e) {
 
 // h1.addEventListener('mouseenter', alertH1);
 
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
-console.log(randomColor(0, 255));
+// NOTES
 
-document.querySelector('.nav__link').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-});
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+// console.log(randomColor(0, 255));
 
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-});
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+// });
 
-document.querySelector('.nav').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-});
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+// });
+
+// document.querySelector('.nav').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+// });
 
 // old school way. More modern to use add event listener
 // h1.onmouseenter = function (e) {
 //   alert('you are reading the heading');
 // };
+
+//smooth scrolling from NavBar
