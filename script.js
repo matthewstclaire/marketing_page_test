@@ -73,12 +73,30 @@ btnScrollTo.addEventListener('click', function (e) {
 
 // const logo = document.querySelector('.nav__logo');
 
-const alertH1 = function (e) {
-  alert('This is an alert');
-  h1.removeEventListener('mouseenter', alertH1);
-};
+// const alertH1 = function (e) {
+//   alert('This is an alert');
+//   h1.removeEventListener('mouseenter', alertH1);
+// };
 
-h1.addEventListener('mouseenter', alertH1);
+// h1.addEventListener('mouseenter', alertH1);
+
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+console.log(randomColor(0, 255));
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+});
+
+document.querySelector('.nav').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+});
 
 // old school way. More modern to use add event listener
 // h1.onmouseenter = function (e) {
