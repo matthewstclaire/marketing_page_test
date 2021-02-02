@@ -36,18 +36,34 @@ document.addEventListener('keydown', function (e) {
 //a lot of use very good way
 //insertAdjacentHTML
 
+//Cookie notice
+
 const message = document.createElement('div');
 message.classList.add('cookie-message');
 message.innerHTML =
   'We use cookies for improved functionality and analytics. You must comply. <button class="btn btn--close-cookie">Yes Overlord</button>';
 header.append(message);
-
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
 document
   .querySelector('.btn--close-cookie')
   .addEventListener('click', function () {
     message.remove();
   });
 
+//smooth scrolling
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  window.scrollTo(
+    s1coords.left + window.pageXOffset,
+    s1coords.top + window.pageYOffset
+  );
+});
+
 /// styles attributes and classes
-message.style.backgroundColor = '#37383d';
-message.style.width = '120%';
+
+// const logo = document.querySelector('.nav__logo');
