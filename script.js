@@ -2,7 +2,7 @@
 
 ///////////////////////////////////////
 // Modal window
-
+const header = document.querySelector('.header');
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
@@ -32,3 +32,22 @@ document.addEventListener('keydown', function (e) {
 });
 
 /////// Creating and Inserting elements
+
+//a lot of use very good way
+//insertAdjacentHTML
+
+const message = document.createElement('div');
+message.classList.add('cookie-message');
+message.innerHTML =
+  'We use cookies for improved functionality and analytics. You must comply. <button class="btn btn--close-cookie">Yes Overlord</button>';
+header.append(message);
+
+document
+  .querySelector('.btn--close-cookie')
+  .addEventListener('click', function () {
+    message.remove();
+  });
+
+/// styles attributes and classes
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
