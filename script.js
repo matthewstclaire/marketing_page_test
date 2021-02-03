@@ -7,6 +7,10 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const h1 = document.querySelector('h1');
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
 ///////////////////////////////////////
 // Modal window
 
@@ -81,25 +85,43 @@ btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
-//tabbed component
-const tabs = document.querySelectorAll('.operations__tab');
-const tabsContainer = document.querySelector('.operations__tab-container');
-const tabsContent = document.querySelectorAll('.operations__content');
+// //tabbed component
+
+// tabsContainer.addEventListener('click', function (e) {
+//   const clicked = e.target.closest('.operations__tab');
+
+//   // guard clause idk wtf
+//   if (!clicked) return;
+
+//   //active tab
+//   tabs.forEach(t => t.classList.remove('operations__tab--active'));
+//   clicked.classList.add('operations__tab--active');
+
+//   //activate content area
+//   console.log(clicked.dataset.tab);
+//   document
+//     .querySelector(`operations__content--${clicked.dataset.tab}`)
+//     .classList.add('operations__content--active');
+// });
+
+// Tabbed component
 
 tabsContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
 
-  // guard clause idk wtf
+  // Guard clause
   if (!clicked) return;
 
-  //active tab
+  // Remove active classes
   tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  // Activate tab
   clicked.classList.add('operations__tab--active');
 
-  //activate content area
-  console.log(clicked.dataset.tab);
+  // Activate content area
   document
-    .querySelector(`operations__content--${clicked.dataset.tab}`)
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
 });
 
