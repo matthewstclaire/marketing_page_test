@@ -81,6 +81,35 @@ btnScrollTo.addEventListener('click', function (e) {
   section1.scrollIntoView({ behavior: 'smooth' });
 });
 
+//tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  // guard clause idk wtf
+  if (!clicked) return;
+
+  //active tab
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  clicked.classList.add('operations__tab--active');
+
+  //activate content area
+  console.log(clicked.dataset.tab);
+  document
+    .querySelector(`operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
+//don't use this method because it is too many functions being thrown out there
+// tabs.forEach(t =>
+//   t.addEventListener('click', function (e) {
+//     console.log('This is something');
+//   })
+// );
+
 /////////////////////////////////////////////////////////////////
 // notes
 /////////////////////////////////////////////////////////////////
@@ -125,12 +154,12 @@ btnScrollTo.addEventListener('click', function (e) {
 
 //dom traversing
 //going down
-console.log(h1.querySelectorAll('.highlight'));
-h1.firstElementChild.style.color = 'white';
+// console.log(h1.querySelectorAll('.highlight'));
+// h1.firstElementChild.style.color = 'white';
 
-//selecting parents, going upwards
-console.log(h1.parentNode);
-h1.closest('h1').style.background = 'var(--gradient-secondary)';
+// //selecting parents, going upwards
+// console.log(h1.parentNode);
+// h1.closest('h1').style.background = 'var(--gradient-secondary)';
 
-//going sideways
-console.log(h1.previousElementSibling);
+// //going sideways
+// console.log(h1.previousElementSibling);
