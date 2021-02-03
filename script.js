@@ -122,3 +122,15 @@ btnScrollTo.addEventListener('click', function (e) {
 // };
 
 //smooth scrolling from NavBar
+
+//dom traversing
+//going down
+console.log(h1.querySelectorAll('.highlight'));
+h1.firstElementChild.style.color = 'white';
+
+//selecting parents, going upwards
+console.log(h1.parentNode);
+h1.closest('h1').style.background = 'var(--gradient-secondary)';
+
+//going sideways
+console.log(h1.previousElementSibling);
