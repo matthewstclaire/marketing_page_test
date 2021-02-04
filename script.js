@@ -141,6 +141,7 @@ const handleHover = function (e, opacity) {
   }
 };
 
+//can also use bind here.
 nav.addEventListener('mouseover', function (e) {
   handleHover(e, 0.5);
 });
@@ -148,25 +149,45 @@ nav.addEventListener('mouseover', function (e) {
 nav.addEventListener('mouseout', function (e) {
   handleHover(e, 1);
 });
-// nav.addEventListener('mouseover', function (e) {
-//   if (e.target.classList.contains('nav__link')) {
-//     const link = e.target;
-//     const siblings = link.closest('.nav').querySelector('.nav__link');
-//     const logo = link.closest('.nav').querySelector('img');
 
-//     siblings.forEach(el => {
-//       if (el !== link) el.style.opacity = 0.5;
-//     });
-//     logo.style.opacity = 0.5;
-//   }
+// sticky nav
+
+const initialCoords = section1.getBoundingClientRect();
+
+// window.addEventListener('scroll', function (e) {
+//   console.log(window.scrollY);
+//   if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
 // });
 
-//don't use this method because it is too many functions being thrown out there
-// tabs.forEach(t =>
-//   t.addEventListener('click', function (e) {
-//     console.log('This is something');
-//   })
-// );
+// const obsCallback = function (entries, observer) {
+//   entries.forEach(entry => {
+//     console.log(entry);
+//   });
+// };
+
+//these are the coords that indicate the intersection
+// const obsOptions = {
+//   root: null,
+//   threshold: [0, 0.2],
+// };
+
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: '-90px',
+});
+headerObserver.observe(header);
 
 /////////////////////////////////////////////////////////////////
 // notes
